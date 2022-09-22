@@ -1,6 +1,8 @@
 package com.kairosds.pricesapp.infrastructure.rest.data.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.kairosds.pricesapp.infrastructure.config.DateTimeDeserializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,7 +17,7 @@ import java.time.LocalDateTime;
 @Builder
 public class PriceRequest {
 
-    //    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime date;
 

@@ -23,6 +23,15 @@ public class PricesAppExceptionHandler {
                 .body(new ErrorResponse(errorMessages));
     }
 
+    @ExceptionHandler(value = BadRequestException.class)
+    public ResponseEntity<ErrorResponse> handle(BadRequestException ex) {
+
+        List<String> errorMessages = List.of(ex.getMessage());
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new ErrorResponse(errorMessages));
+    }
+
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handle(MethodArgumentNotValidException ex) {
 
