@@ -1,7 +1,6 @@
-package com.kairosds.pricesapp.infrastructure.rest.data.response;
+package com.kairosds.pricesapp.application.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,12 +13,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class PriceResponse {
+public class PriceForDateOutput {
     private Long productId;
     private Long brandId;
     private Long priceList;
     private BigDecimal price;
+
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime date;
 }

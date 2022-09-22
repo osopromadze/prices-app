@@ -1,12 +1,13 @@
 package com.kairosds.pricesapp.infrastructure.config;
 
+import com.kairosds.pricesapp.application.usecases.GetPriceForDateUseCase;
 import com.kairosds.pricesapp.domain.service.BrandService;
 import com.kairosds.pricesapp.domain.service.PriceService;
 import com.kairosds.pricesapp.infrastructure.persistence.mapper.PricePersistenceMapper;
 import com.kairosds.pricesapp.infrastructure.persistence.repository.H2BrandRepository;
+import com.kairosds.pricesapp.infrastructure.persistence.repository.H2PriceRepository;
 import com.kairosds.pricesapp.infrastructure.persistence.repository.SpringDataH2BrandRepository;
 import com.kairosds.pricesapp.infrastructure.persistence.repository.SpringDataH2PriceRepository;
-import com.kairosds.pricesapp.infrastructure.persistence.repository.H2PriceRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -29,7 +30,12 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public PriceService priceService(H2PriceRepository h2PriceRepository, BrandService brandService) {
-        return new PriceService(h2PriceRepository, brandService);
+    public PriceService priceService(H2PriceRepository h2PriceRepository) {
+        return new PriceService(h2PriceRepository);
+    }
+
+    @Bean
+    public GetPriceForDateUseCase getPriceForDateUseCase(PriceService priceService, BrandService brandService) {
+        return new GetPriceForDateUseCase(priceService, brandService);
     }
 }

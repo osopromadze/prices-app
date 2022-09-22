@@ -1,16 +1,14 @@
 package com.kairosds.pricesapp.domain.service;
 
-import com.kairosds.pricesapp.application.ports.input.ExistsBrandUseCase;
-import com.kairosds.pricesapp.application.ports.output.BrandOutputPort;
+import com.kairosds.pricesapp.domain.repository.BrandRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class BrandService implements ExistsBrandUseCase {
+public class BrandService {
 
-    private final BrandOutputPort brandOutputPort;
+    private final BrandRepository brandRepository;
 
-    @Override
     public boolean existsById(Long id) {
-        return brandOutputPort.existsById(id);
+        return brandRepository.existsById(id);
     }
 }

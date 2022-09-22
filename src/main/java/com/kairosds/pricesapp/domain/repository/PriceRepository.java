@@ -1,9 +1,9 @@
-package com.kairosds.pricesapp.application.ports.output;
+package com.kairosds.pricesapp.domain.repository;
 
 import com.kairosds.pricesapp.domain.model.Price;
 
 import java.util.List;
 
-public interface PriceOutputPort {
+public interface PriceRepository {
     List<Price> getPrices();
 }

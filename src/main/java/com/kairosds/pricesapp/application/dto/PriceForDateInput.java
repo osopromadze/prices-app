@@ -1,4 +1,4 @@
-package com.kairosds.pricesapp.infrastructure.rest.data.request;
+package com.kairosds.pricesapp.application.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -15,8 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PriceRequest {
-
+public class PriceForDateInput {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime date;

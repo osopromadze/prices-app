@@ -1,27 +1,17 @@
 package com.kairosds.pricesapp.infrastructure.persistence.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Table(name = "brand")
+@Getter
 public class BrandEntity {
     @Id
     private Long id;
 
     private String name;
-
-    @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<PriceEntity> prices;
 }

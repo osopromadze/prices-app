@@ -2,12 +2,22 @@ package com.kairosds.pricesapp.infrastructure.persistence.mapper;
 
 import com.kairosds.pricesapp.domain.model.Price;
 import com.kairosds.pricesapp.infrastructure.persistence.entity.PriceEntity;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
 
-@Mapper
-public interface PricePersistenceMapper {
+@Component
+public class PricePersistenceMapper {
 
-    @Mapping(source = "priceEntity.brand.id", target = "brandId")
-    Price toPrice(PriceEntity priceEntity);
+    public Price toPrice(PriceEntity priceEntity) {
+        return Price.builder()
+                .id(priceEntity.getId())
+                .brandId(priceEntity.getBrand().getId())
+                .startDate(priceEntity.getStartDate())
+                .endDate(priceEntity.getEndDate())
+                .priceList(priceEntity.getPriceList())
+                .productId(priceEntity.getProductId())
+                .priority(priceEntity.getPriority())
+                .price(priceEntity.getPrice())
+                .curr(priceEntity.getCurr())
+                .build();
+    }
 }
