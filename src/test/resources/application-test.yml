@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:kairostest
+    driver-class-name: org.h2.Driver
+    username: kairostest
+    password: kairostest
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
+  sql:
+    init:
+      data-locations: 'classpath:data-test.sql'
+      mode: always
