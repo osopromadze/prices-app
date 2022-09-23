@@ -30,12 +30,12 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public PriceService priceService(H2PriceRepository h2PriceRepository) {
-        return new PriceService(h2PriceRepository);
+    public PriceService priceService(H2PriceRepository h2PriceRepository, BrandService brandService) {
+        return new PriceService(h2PriceRepository, brandService);
     }
 
     @Bean
-    public GetPriceForDateUseCase getPriceForDateUseCase(PriceService priceService, BrandService brandService) {
-        return new GetPriceForDateUseCase(priceService, brandService);
+    public GetPriceForDateUseCase getPriceForDateUseCase(PriceService priceService) {
+        return new GetPriceForDateUseCase(priceService);
     }
 }

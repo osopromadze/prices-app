@@ -13,14 +13,8 @@ import lombok.RequiredArgsConstructor;
 public class GetPriceForDateUseCase {
 
     private final PriceService priceService;
-    private final BrandService brandService;
 
     public PriceForDateOutput execute(PriceForDateInput input) {
-        boolean brandExists = brandService.existsById(input.getBrandId());
-
-        if (!brandExists) {
-            throw new BrandNotFoundException(String.format("Brand with id %d not found", input.getBrandId()));
-        }
 
         Price price = priceService.getPrice(input.getDate(), input.getProductId(), input.getBrandId());
 

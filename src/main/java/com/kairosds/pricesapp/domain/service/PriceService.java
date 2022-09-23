@@ -1,5 +1,6 @@
 package com.kairosds.pricesapp.domain.service;
 
+import com.kairosds.pricesapp.domain.exception.BrandNotFoundException;
 import com.kairosds.pricesapp.domain.exception.PriceNotFoundException;
 import com.kairosds.pricesapp.domain.model.Price;
 import com.kairosds.pricesapp.domain.repository.PriceRepository;
@@ -14,7 +15,16 @@ public class PriceService {
 
     private final PriceRepository priceRepository;
 
+    private final BrandService brandService;
+
     public Price getPrice(LocalDateTime date, Long productId, Long brandId) {
+
+        boolean brandExists = brandService.existsById(brandId);
+
+        if (!brandExists) {
+            throw new BrandNotFoundException(String.format("Brand with id %d not found", brandId));
+        }
+
         List<Price> prices = priceRepository.getPrices().stream()
                 .filter(price -> price.getBrandId().equals(brandId))
                 .filter(price -> price.getProductId().equals(productId))
