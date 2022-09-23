@@ -3,9 +3,7 @@ package com.kairosds.pricesapp.application.usecases;
 import com.kairosds.pricesapp.application.dto.PriceForDateInput;
 import com.kairosds.pricesapp.application.dto.PriceForDateOutput;
 import com.kairosds.pricesapp.application.mapper.PriceMapper;
-import com.kairosds.pricesapp.domain.exception.BrandNotFoundException;
 import com.kairosds.pricesapp.domain.model.Price;
-import com.kairosds.pricesapp.domain.service.BrandService;
 import com.kairosds.pricesapp.domain.service.PriceService;
 import lombok.RequiredArgsConstructor;
 
